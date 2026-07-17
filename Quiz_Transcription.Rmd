@@ -1,0 +1,144 @@
+---
+title: "Quiz Transcription"
+output: html_document
+---
+
+# Question 1
+
+What happens when you run the following R code?
+
+```{r}
+counter <- 1
+
+while(counter < 3){
+  print(counter)
+}
+```
+
+- It prints 1, 2, and 3, then stops
+- It prints 1 and 2, then stops
+x It prints 1 repeatedly and never stops
+- It prints 1, 2, and 3, then stops
+
+# Question 2
+
+Consider the function:
+
+```{r}
+safe_div <- function(x, y) {
+  if (y == 0) {
+    return("Division not possible")
+    print("Trying to divide by zero...")
+  }
+  return(x / y)
+}
+```
+```{r}
+safe_div(10/0)
+```
+
+What happens when you run `safe_div(10, 0)`?
+
+- It prints "Trying to divide by zero..." and returns NA
+- The function returns `x / y`
+- It returns "Division not possible" and prints "Trying to divide by zero..."
+x It returns "Division not possible" and the print statement is ignored
+
+# Question 3
+
+Which of the following is a correct anonymous-function rewrite of:
+
+```{r}
+add <- function(x) {
+  return(x + 3)
+}
+
+add(2)
+```
+
+- `(x) function x + 3 (2)`
+- `function x x + 3 (2)`
+- `(function(x) x + 3)(2)`
+- `(function(x) x + 3) 2`
+
+# Question 4
+
+In the function documentation shown below, what does the `Args:` section describe?
+
+```{r}
+my_summary <- function(v) {
+  # Calculates a simple summary statistic for a numeric vector.
+  #
+  # Args:
+  #   v (num): a numeric vector whose elements will be processed.
+  #
+  # Returns:
+  #   value (num): a single numeric value representing the sum.
+}
+```
+
+- The order in which operations inside the function are executed
+- The objects that will be returned by the function
+- The package dependencies of the function
+- The objects created inside the function
+- The input (or inputs) the function expects, along with its/their data type
+
+# Question 5
+
+You defined the following function using `dplyr` and the curly-curly operator:
+
+```{r}
+custom_summary <- function(data, col) {
+  data %>%
+    summarize(
+      mean_value = mean({{ col }}),
+      sd_value   = sd({{ col }})
+    )
+}
+
+custom_summary(df, age)
+```
+
+What is the purpose of the `{{ col }}` syntax here?
+
+- Because without `{{ }}`, when you call the function `dplyr` will ignore the literal column name `col` and automatically guess the correct column (e.g., `age`) based on the data.
+- Because without `{{ }}`, when you call the function `dplyr` will look for a column literally named `col` instead of using the column passed to the function (e.g., `age`).
+- Because `{{ }}` makes the function run faster and it is a general good coding style practice when using custom functions with `dplyr`.
+- Because without `{{ }}`, when you call the function `dplyr` defaults to the first column in the data unless instructed otherwise.
+
+# Question 6
+
+You run the following code:
+
+```{r}
+mutate(df, category = case_when(
+  score > 50 ~ "Pass",
+  score > 80 ~ "High Pass",
+  TRUE ~ "Fail"
+))
+```
+
+A student with `score = 90` will be labeled...
+
+- "Pass", because `case_when()` assigns the first matching condition and stops evaluating the rest
+- An error, because the conditions overlap
+- "High Pass", because `case_when()` evaluates all conditions and picks the most specific match
+- "Fail", because 90 does not satisfy any condition
+
+# Question 7
+
+Table A has 5 rows, with a key value `"x"` appearing 2 times. Table B has 3 rows, with the same key `"x"` appearing 2 times. If you `inner_join()` A and B by that key, how many rows involving key `"x"` appear in the result?
+
+- 0
+- 5
+- 4
+- 2
+
+# Question 8
+
+Where should global code chunk options be set in an R Markdown document?
+
+- Inside each chunk that needs to follow the global settings
+- At the end of the document after all chunks have run
+- In a setup code chunk near the beginning of the file
+- In the YAML header at the top of the document
