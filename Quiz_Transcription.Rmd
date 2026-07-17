@@ -32,8 +32,6 @@ safe_div <- function(x, y) {
   }
   return(x / y)
 }
-```
-```{r}
 safe_div(10/0)
 ```
 
@@ -42,7 +40,7 @@ What happens when you run `safe_div(10, 0)`?
 - It prints "Trying to divide by zero..." and returns NA
 - The function returns `x / y`
 - It returns "Division not possible" and prints "Trying to divide by zero..."
-x It returns "Division not possible" and the print statement is ignored
+- It returns "Division not possible" and the print statement is ignored
 
 # Question 3
 
