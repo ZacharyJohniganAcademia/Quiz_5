@@ -32,7 +32,9 @@ safe_div <- function(x, y) {
   }
   return(x / y)
 }
-safe_div(10/0)
+```
+```{r}
+safe_div(10, 0)
 ```
 
 What happens when you run `safe_div(10, 0)`?
@@ -40,7 +42,7 @@ What happens when you run `safe_div(10, 0)`?
 - It prints "Trying to divide by zero..." and returns NA
 - The function returns `x / y`
 - It returns "Division not possible" and prints "Trying to divide by zero..."
-- It returns "Division not possible" and the print statement is ignored
+x It returns "Division not possible" and the print statement is ignored
 
 # Question 3
 
@@ -54,9 +56,12 @@ add <- function(x) {
 add(2)
 ```
 
+```{r}
+(function(x) x + 3) 2
+```
 - `(x) function x + 3 (2)`
 - `function x x + 3 (2)`
-- `(function(x) x + 3)(2)`
+x `(function(x) x + 3)(2)`
 - `(function(x) x + 3) 2`
 
 # Question 4
@@ -79,7 +84,7 @@ my_summary <- function(v) {
 - The objects that will be returned by the function
 - The package dependencies of the function
 - The objects created inside the function
-- The input (or inputs) the function expects, along with its/their data type
+x The input (or inputs) the function expects, along with its/their data type
 
 # Question 5
 
@@ -95,6 +100,23 @@ custom_summary <- function(data, col) {
 }
 
 custom_summary(df, age)
+```
+Practice
+```{r}
+# Notice that col is just the argument name
+custom_summary <- function(data, col) {
+  data %>% 
+    summarize(
+      mean_value = mean({{col}}),
+    )
+}
+#library(utils)
+#write.csv(mpg, "mpg.csv")
+```
+
+Use the `custom_summary` with one column
+```{r}
+custom_summary(mpg, cty)
 ```
 
 What is the purpose of the `{{ col }}` syntax here?
