@@ -138,13 +138,65 @@ mutate(df, category = case_when(
 ))
 ```
 
-
 A student with `score = 90` will be labeled...
 
-- "Pass", because `case_when()` assigns the first matching condition and stops evaluating the rest
+x "Pass", because `case_when()` assigns the first matching condition and stops evaluating the rest
 - An error, because the conditions overlap
 - "High Pass", because `case_when()` evaluates all conditions and picks the most specific match
 - "Fail", because 90 does not satisfy any condition
+
+Practice
+# Create a dataset
+```{r}
+student <- tibble(
+  score = 90
+)
+student
+```
+
+```{r}
+student %>%
+  mutate(
+    category = case_when(
+      score > 50 ~ "Pass",
+      score > 80 ~ "High Pass",
+      TRUE ~ "Fail"
+    )
+  )
+```
+The out put is 90 = Pass. Notice that’s not what we probably wanted! Why? Because case_when() checks from top to bottom and stops at the first condition that is true. For a score of 90: `score > 50   ✅ TRUE`.  It immediately assigns "Pass" and never even looks at `score > 80`. 
+
+To get the intended result, put the more specific condition first:
+```{r}
+student %>%
+  mutate(
+    category = case_when(
+      score > 80 ~ "High Pass",
+      score > 50 ~ "Pass",
+      TRUE ~ "Fail"
+    )
+  )
+```
+Now the output is 90 = High Pass. The `case_when()` uses the first matching condition, so order matters.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Question 7
 
@@ -154,6 +206,28 @@ Table A has 5 rows, with a key value `"x"` appearing 2 times. Table B has 3 rows
 - 5
 - 4
 - 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Question 8
 
