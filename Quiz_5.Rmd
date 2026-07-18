@@ -122,7 +122,7 @@ custom_summary(mpg, cty)
 What is the purpose of the `{{ col }}` syntax here?
 
 - Because without `{{ }}`, when you call the function `dplyr` will ignore the literal column name `col` and automatically guess the correct column (e.g., `age`) based on the data.
-- Because without `{{ }}`, when you call the function `dplyr` will look for a column literally named `col` instead of using the column passed to the function (e.g., `age`).
+x Because without `{{ }}`, when you call the function `dplyr` will look for a column literally named `col` instead of using the column passed to the function (e.g., `age`).
 - Because `{{ }}` makes the function run faster and it is a general good coding style practice when using custom functions with `dplyr`.
 - Because without `{{ }}`, when you call the function `dplyr` defaults to the first column in the data unless instructed otherwise.
 
@@ -137,6 +137,7 @@ mutate(df, category = case_when(
   TRUE ~ "Fail"
 ))
 ```
+
 
 A student with `score = 90` will be labeled...
 
